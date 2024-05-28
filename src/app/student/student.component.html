@@ -1,0 +1,67 @@
+<div>
+  <h2>Edit Student Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>DOB</th>
+        <th>Course</th>
+        <th>Marks</th>
+        <th>Fee</th>
+        <th>Percentage</th>
+        <th>Actions</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{student.id}}</td>
+        <td>
+          <input *ngIf="editMode[student.id]" [(ngModel)]="student.name">
+          <span *ngIf="!editMode[student.id]">{{student.name}}</span>
+        </td>
+        <td>
+          <input *ngIf="editMode[student.id]" [(ngModel)]="student.gender">
+          <span *ngIf="!editMode[student.id]">{{student.gender}}</span>
+        </td>
+        <td>
+          <input *ngIf="editMode[student.id]" [(ngModel)]="student.dob" type="date">
+          <span *ngIf="!editMode[student.id]">{{student.dob | date}}</span>
+        </td>
+        <td>
+          <input *ngIf="editMode[student.id]" [(ngModel)]="student.course">
+          <span *ngIf="!editMode[student.id]">{{student.course|uppercase}}</span>
+        </td>
+        <td>
+          <input *ngIf="editMode[student.id]" [(ngModel)]="student.marks" type="number">
+          <span *ngIf="!editMode[student.id]">{{student.marks}}</span>
+        </td>
+        <td>
+          <input *ngIf="editMode[student.id]" [(ngModel)]="student.fee" type="number">
+          <span *ngIf="!editMode[student.id]">{{student.fee |currency:'INR' :student.fee >1500:'2.2-2'}}</span>
+        </td>
+        <td>{{(student.marks/totalMark)|percent :'2.2-2'}}</td>
+        <td>
+          <button *ngIf="!editMode[student.id]" (click)="enableEdit(student.id)">Edit</button>
+          <button *ngIf="editMode[student.id]" (click)="saveEdit(student)" class="save">Save</button>
+
+        </td>
+        <td>
+          <button (click)="deleteStudent(student.id)" class="delete">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td>{{students.length + 1}}</td>
+        <td><input [(ngModel)]="newStudent.name" placeholder="Name"></td>
+        <td><input [(ngModel)]="newStudent.gender" placeholder="Gender"></td>
+        <td><input [(ngModel)]="newStudent.dob" type="date"></td>
+        <td><input [(ngModel)]="newStudent.course" placeholder="Course"></td>
+        <td><input [(ngModel)]="newStudent.marks" type="number" placeholder="Marks"></td>
+        <td><input [(ngModel)]="newStudent.fee" type="number" placeholder="Fee"></td>
+        <td><button (click)="addStudent()">Add</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
