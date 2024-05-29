@@ -32,4 +32,16 @@ export class StudentService {
   deleteStudent(id: number): void {
     this.students = this.students.filter(student => student.id !== id);
   }
+
+  filterStudentByGender(filerText:string){
+    if(filerText.toLowerCase()=='all'||filerText.toLowerCase()==''||this.students.length==0){
+      return this.students ;
+    }else{
+
+     return this.students.filter((data:Student)=>{
+      return data.gender.toLowerCase()==filerText.toLowerCase()
+     })
+
+    }
+  }
 }

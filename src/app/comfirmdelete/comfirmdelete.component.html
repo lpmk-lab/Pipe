@@ -1,0 +1,11 @@
+<div class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="onComfrim(false)">&times;</span>
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete {{ name }}?</p>
+    <button (click)="onComfrim(true)" class="confirm">Delete</button>
+    <button (click)="onComfrim(false)">Cancel</button>
+
+  </div>
+</div>
+<div class="modal-backdrop"></div>

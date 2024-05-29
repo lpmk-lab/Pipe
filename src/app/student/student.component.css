@@ -73,3 +73,26 @@ button.delete {
 button.delete:hover {
   background-color: #d32f2f;
 }
+/* Dropdown style */
+select {
+  padding: 8px 12px 12px 12px;
+  margin: 8px 12px 12px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+select:hover {
+  border-color: #888;
+  background-color: #f0f0f0;
+}
+
+select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
